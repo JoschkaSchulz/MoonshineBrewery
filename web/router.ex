@@ -23,10 +23,14 @@ defmodule MoonshineBrewery.Router do
   scope "/api", MoonshineBrewery do
     pipe_through :api
 
-    get "/login", UserController, :login
+    get "/users/login", UserController, :login
 
-    get "/create_event", EventController, :create_event
-    get "/show_events", EventController, :show_events
-    get "/join_event", EventController, :join_event
+    scope "/events" do
+      get "/create",  EventController, :create
+      get "/list",    EventController, :list
+      get "/join",    EventController, :join
+      get "/leave",   EventController, :leave
+      get "/show",   EventController, :show
+    end
   end
 end

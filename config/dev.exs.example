@@ -35,7 +35,7 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :moonshine_brewery, MoonshineBrewery.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "Joschka",
-  password: "",
+  username: "postgres",
+  password: "postgres",
   database: "moonshine_brewery_dev",
   pool_size: 10

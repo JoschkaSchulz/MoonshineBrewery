@@ -1,10 +1,10 @@
 defmodule MoonshineBrewery.UserController do
   use MoonshineBrewery.Web, :controller
 
-  def login(conn, _params) do
+  def login(conn, %{"email" => email, "password" => password}) do
     # TODO: check for login token?
 
-    response = HTTPotion.post "http://127.0.0.1:4040/api/v1/login?email=joschka.schulz@gmx.de&password=12345678"
+    response = HTTPotion.post "http://127.0.0.1:4040/api/v1/login?email=#{email}&password=#{password}"
 
     if HTTPotion.Response.success?(response) do
       {:ok, body} = JSON.decode(response.body)

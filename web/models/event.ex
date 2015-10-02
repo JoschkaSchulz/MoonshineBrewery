@@ -2,11 +2,12 @@ defmodule MoonshineBrewery.Event do
   use MoonshineBrewery.Web, :model
 
   schema "events" do
+    has_many :user_events, MoonshineBrewery.UserEvent
+    has_many :users, through: [:user_events, :user]
+
     field :name, :string
     field :description, :string
     field :date, Ecto.DateTime
-
-    has_many :users, MoonshineBrewery.User
 
     timestamps
   end
@@ -16,7 +17,8 @@ defmodule MoonshineBrewery.Event do
 
   def with_id(query, id) do
     from events in query,
-    where: events.id == ^id
+    where: events.id == ^id,
+    preload: :users
   end
 
   @doc """
