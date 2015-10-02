@@ -6,11 +6,18 @@ defmodule MoonshineBrewery.Event do
     field :description, :string
     field :date, Ecto.DateTime
 
+    has_many :users, MoonshineBrewery.User
+
     timestamps
   end
 
   @required_fields ~w(name description date)
   @optional_fields ~w()
+
+  def with_id(query, id) do
+    from events in query,
+    where: events.id == ^id
+  end
 
   @doc """
   Creates a changeset based on the `model` and `params`.

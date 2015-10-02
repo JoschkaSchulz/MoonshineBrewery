@@ -1,8 +1,6 @@
 defmodule MoonshineBrewery.UserController do
   use MoonshineBrewery.Web, :controller
 
-  plug :action
-
   def login(conn, _params) do
     # TODO: check for login token?
 

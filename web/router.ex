@@ -25,6 +25,8 @@ defmodule MoonshineBrewery.Router do
 
     get "/login", UserController, :login
 
-    get "/create_event", EventController, :create_event  
+    get "/create_event", EventController, :create_event
+    get "/show_events", EventController, :show_events
+    get "/join_event", EventController, :join_event
   end
 end

@@ -5,6 +5,8 @@ defmodule MoonshineBrewery.User do
     field :token, :string
     field :main_id, :integer
 
+    has_many :events, MoonshineBrewery.Event
+
     timestamps
   end
 
