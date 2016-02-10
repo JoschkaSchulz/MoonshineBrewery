@@ -74,7 +74,7 @@ defmodule MoonshineBrewery.EventController do
 
     users = Map.new()
     user = for u <- event.users do
-      %{id: u.id, token: u.token}
+      %{id: u.id, token: u.token, name: u.name}
     end
 
     render conn, response: %{event: %{id: event.id, name: event.name, description: event.description, date: event.date, users: user, users_count: length(user)}}

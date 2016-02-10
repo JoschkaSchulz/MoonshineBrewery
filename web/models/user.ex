@@ -5,6 +5,7 @@ defmodule MoonshineBrewery.User do
     has_many :user_events, MoonshineBrewery.UserEvent
     has_many :events, through: [:user_events, :event]
 
+    field :name, :string
     field :token, :string
     field :main_id, :integer
 

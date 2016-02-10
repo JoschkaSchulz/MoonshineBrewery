@@ -4,7 +4,7 @@ defmodule MoonshineBrewery.UserController do
   def login(conn, %{"email" => email, "password" => password}) do
     # TODO: check for login token?
 
-    response = HTTPotion.post "http://127.0.0.1:4040/api/v1/login?email=#{email}&password=#{password}"
+    response = HTTPotion.post("http://127.0.0.1:4040/api/v1/login?email=#{email}&password=#{password}")
 
     if HTTPotion.Response.success?(response) do
       {:ok, body} = JSON.decode(response.body)
@@ -22,7 +22,7 @@ defmodule MoonshineBrewery.UserController do
     IO.puts token
     IO.puts "Token generation completed"
 
-    user = %MoonshineBrewery.User{token: token, main_id: id}
+    user = %MoonshineBrewery.User{token: token, name: username, main_id: id}
     MoonshineBrewery.Repo.insert user
 
     render conn, response: %{user: %{id: id, username: username, token: token}}
